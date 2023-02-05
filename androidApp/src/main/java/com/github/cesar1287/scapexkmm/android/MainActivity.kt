@@ -7,6 +7,13 @@ import com.github.cesar1287.scapexkmm.android.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    //todo Finalizar design
+    //todo loading
+    //todo implementar com flow
+    //todo Fazer iOS
+    //todo koin no KMM
+    //todo Hilt no Android
+
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }

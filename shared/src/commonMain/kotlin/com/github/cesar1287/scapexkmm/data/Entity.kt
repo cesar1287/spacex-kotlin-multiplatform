@@ -10,13 +10,13 @@ import kotlinx.serialization.Serializable
 data class RocketLaunch(
     @SerialName("flight_number")
     val flightNumber: Int,
-    @SerialName("name")
+    @SerialName("mission_name")
     val missionName: String,
-    @SerialName("date_utc")
+    @SerialName("launch_date_utc")
     val launchDateUTC: String,
     @SerialName("details")
     val details: String?,
-    @SerialName("success")
+    @SerialName("launch_success")
     val launchSuccess: Boolean?,
     @SerialName("links")
     val links: Links
@@ -26,16 +26,10 @@ data class RocketLaunch(
 
 @Serializable
 data class Links(
-    @SerialName("patch")
-    val patch: Patch?,
-    @SerialName("article")
+    @SerialName("mission_patch")
+    val patch: String?,
+    @SerialName("mission_patch_small")
+    val patchSmall: String?,
+    @SerialName("article_link")
     val article: String?
-)
-
-@Serializable
-data class Patch(
-    @SerialName("small")
-    val small: String?,
-    @SerialName("large")
-    val large: String?
 )
