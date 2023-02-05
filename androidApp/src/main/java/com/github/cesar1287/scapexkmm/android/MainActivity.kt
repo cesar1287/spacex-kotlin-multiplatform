@@ -32,13 +32,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel.getAllLaunches()
-        setupRecyclerView()
+        setupViews()
     }
 
-    private fun setupRecyclerView() {
+    private fun setupViews() {
         binding.rvMainLaunches.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = mainAdapter
+        }
+
+        viewModel.onLaunchesList.observe(this) {
+            mainAdapter.submitList(it)
         }
     }
 }
