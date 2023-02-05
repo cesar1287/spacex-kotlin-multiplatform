@@ -3,6 +3,7 @@ package com.github.cesar1287.scapexkmm.android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cesar1287.scapexkmm.android.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,10 +23,22 @@ class MainActivity : AppCompatActivity() {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
 
+    private val mainAdapter by lazy {
+        MainAdapter()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         viewModel.getAllLaunches()
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvMainLaunches.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = mainAdapter
+        }
     }
 }

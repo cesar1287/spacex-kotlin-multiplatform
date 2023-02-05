@@ -16,7 +16,17 @@ class MainViewModel: ViewModel() {
             kotlin.runCatching {
                 launchesUseCase.getAllLaunches()
             }.onSuccess {
-                it
+                it.map {rocketLauncher ->
+                    RocketLaunchVO(
+                        flightNumber = rocketLauncher.flightNumber,
+                        missionName = rocketLauncher.missionName,
+                        launchYear = rocketLauncher.launchYear,
+                        details = rocketLauncher.details,
+                        launchSuccess = rocketLauncher.launchSuccess,
+                        patch = rocketLauncher.links.patch,
+                        article = rocketLauncher.links.article
+                    )
+                }
             }.onFailure {
                 it
             }
