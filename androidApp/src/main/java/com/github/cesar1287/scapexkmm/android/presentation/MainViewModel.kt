@@ -20,9 +20,12 @@ class MainViewModel @Inject constructor(
     val onLaunchesList: LiveData<List<RocketLaunchVO>>
         get() = _onLaunchesList
 
+    val command: MutableLiveData<Command> = MutableLiveData()
+
     fun getAllLaunches() {
         viewModelScope.launch {
             kotlin.runCatching {
+                command.value = Command.Loading(true)
                 launchesUseCase.getAllLaunches()
             }.onSuccess {
                 _onLaunchesList.postValue(
@@ -39,8 +42,15 @@ class MainViewModel @Inject constructor(
                     }
                 )
             }.onFailure {
-                it
+                command.value = Command.Error()
+            }.also {
+                command.value = Command.Loading(false)
             }
         }
     }
+}
+
+sealed class Command {
+    class Loading(val value: Boolean): Command()
+    class Error(val error: Int? = null): Command()
 }

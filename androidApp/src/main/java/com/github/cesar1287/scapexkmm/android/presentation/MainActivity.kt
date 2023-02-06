@@ -3,16 +3,13 @@ package com.github.cesar1287.scapexkmm.android.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cesar1287.scapexkmm.android.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    //todo implementar com flow
-    //todo loading
-    //todo koin no KMM
 
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -40,6 +37,21 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.onLaunchesList.observe(this) {
             mainAdapter.submitList(it)
+        }
+
+        viewModel.command.observe(this) {
+            when(it) {
+                is Command.Loading -> {
+                    binding.pbMainLoading.isVisible = it.value
+                }
+                is Command.Error -> {
+                    with(binding) {
+                        rvMainLaunches.isVisible = false
+                        tvMainError.isVisible = true
+                        pbMainLoading.isVisible = false
+                    }
+                }
+            }
         }
     }
 }
