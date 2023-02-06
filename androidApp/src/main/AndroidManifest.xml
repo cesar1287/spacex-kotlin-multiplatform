@@ -7,7 +7,8 @@
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:label="SpaceX Launches">
+        android:label="SpaceX Launches"
+        android:name=".MyApplication">
         <activity
             android:name=".MainActivity"
             android:exported="true">
