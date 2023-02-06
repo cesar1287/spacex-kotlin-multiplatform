@@ -1,10 +1,12 @@
-package com.github.cesar1287.scapexkmm.android
+package com.github.cesar1287.scapexkmm.android.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.github.cesar1287.scapexkmm.android.R
+import com.github.cesar1287.scapexkmm.android.viewObject.RocketLaunchVO
 import com.github.cesar1287.scapexkmm.android.databinding.ItemLaunchBinding
 
 class MainAdapter:
@@ -35,14 +37,20 @@ class MainAdapter:
             rocketLaunch?.launchSuccess?.let {
                 if (it) {
                     launchSuccess.text = itemView.context.getString(R.string.successful)
-                    launchSuccess.setTextColor((ContextCompat.getColor(itemView.context, R.color.colorSuccessful)))
+                    launchSuccess.setTextColor((ContextCompat.getColor(itemView.context,
+                        R.color.colorSuccessful
+                    )))
                 } else {
                     launchSuccess.text = itemView.context.getString(R.string.unsuccessful)
-                    launchSuccess.setTextColor((ContextCompat.getColor(itemView.context, R.color.colorUnsuccessful)))
+                    launchSuccess.setTextColor((ContextCompat.getColor(itemView.context,
+                        R.color.colorUnsuccessful
+                    )))
                 }
             } ?: run {
                 launchSuccess.text = itemView.context.getString(R.string.no_data)
-                launchSuccess.setTextColor((ContextCompat.getColor(itemView.context, R.color.colorNoData)))
+                launchSuccess.setTextColor((ContextCompat.getColor(itemView.context,
+                    R.color.colorNoData
+                )))
             }
         }
     }

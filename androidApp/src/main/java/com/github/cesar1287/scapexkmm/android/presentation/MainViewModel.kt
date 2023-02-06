@@ -1,9 +1,10 @@
-package com.github.cesar1287.scapexkmm.android
+package com.github.cesar1287.scapexkmm.android.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.cesar1287.scapexkmm.android.viewObject.RocketLaunchVO
 import com.github.cesar1287.scapexkmm.domain.LaunchesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

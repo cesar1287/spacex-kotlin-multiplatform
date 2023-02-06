@@ -1,4 +1,4 @@
-package com.github.cesar1287.scapexkmm.android
+package com.github.cesar1287.scapexkmm.android.viewObject
 
 import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil

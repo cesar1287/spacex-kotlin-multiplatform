@@ -1,4 +1,4 @@
-package com.github.cesar1287.scapexkmm.android
+package com.github.cesar1287.scapexkmm.android.di
 
 import com.github.cesar1287.scapexkmm.domain.LaunchesUseCase
 import com.github.cesar1287.scapexkmm.domain.LaunchesUseCaseImpl
